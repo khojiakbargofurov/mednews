@@ -1,21 +1,21 @@
-// Import the functions you need from the SDKs you need
+// src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAtCao_aPav1HA1lKspVms72k_d2lwq9MI",
-  authDomain: "todopro-3ede5.firebaseapp.com",
-  projectId: "todopro-3ede5",
-  storageBucket: "todopro-3ede5.firebasestorage.app",
-  messagingSenderId: "249508731913",
-  appId: "1:249508731913:web:de7e3fd7855f6656672cd8",
-  measurementId: "G-MBX26TZXC6"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const db = getFirestore(app);
-export { app, analytics, db };
-export default app;
+const analytics = getAnalytics(app);
+
+export { app, db, analytics };
